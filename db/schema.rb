@@ -10,15 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619023927) do
+ActiveRecord::Schema.define(:version => 20130619071159) do
 
-  create_table "songs", :force => true do |t|
-    t.string   "song_no"
+  create_table "singers", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "singer_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "songs", :force => true do |t|
+    t.string   "tag"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "singer_id"
   end
 
 end

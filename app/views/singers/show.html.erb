@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @singer.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @singer.description %>
+</p>
+
+<%= link_to 'New Song for Singer', new_singer_song_path(@singer) %> |
+<%= link_to 'Edit', edit_singer_path(@singer) %> |
+<%= link_to 'Back', singers_path %>

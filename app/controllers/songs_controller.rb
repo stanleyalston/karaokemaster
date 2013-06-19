@@ -13,6 +13,7 @@ class SongsController < ApplicationController
   # GET /songs/1
   # GET /songs/1.json
   def show
+    @singer = Singer.find(params[:singer_id])
     @song = Song.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +25,7 @@ class SongsController < ApplicationController
   # GET /songs/new
   # GET /songs/new.json
   def new
+    @singer = Singer.find(params[:singer_id])
     @song = Song.new
 
     respond_to do |format|
@@ -34,17 +36,19 @@ class SongsController < ApplicationController
 
   # GET /songs/1/edit
   def edit
+    @singer = Singer.find(params[:singer_id])
     @song = Song.find(params[:id])
   end
 
   # POST /songs
   # POST /songs.json
   def create
-    @song = Song.new(params[:song])
+    @singer = Singer.find(params[:singer_id])
+    @song = @singer.songs.new(params[:song])
 
     respond_to do |format|
       if @song.save
-        format.html { redirect_to @song, :notice => 'Song was successfully created.' }
+        format.html { redirect_to singer_song_path(@singer, @song), :notice => 'Song was successfully created.' }
         format.json { render :json => @song, :status => :created, :location => @song }
       else
         format.html { render :action => "new" }
@@ -56,6 +60,7 @@ class SongsController < ApplicationController
   # PUT /songs/1
   # PUT /songs/1.json
   def update
+    @singer = Singer.find(params[:singer_id])
     @song = Song.find(params[:id])
 
     respond_to do |format|
@@ -72,6 +77,7 @@ class SongsController < ApplicationController
   # DELETE /songs/1
   # DELETE /songs/1.json
   def destroy
+    @singer = Singer.find(params[:singer_id])
     @song = Song.find(params[:id])
     @song.destroy
 

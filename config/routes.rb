@@ -1,6 +1,15 @@
 Karaokemaster::Application.routes.draw do
   resources :songs
 
+  resources :singers do
+    resources :songs
+  end
+
+
+  
+  
+  root :to => "singers#index"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

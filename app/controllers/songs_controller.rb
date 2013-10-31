@@ -78,7 +78,6 @@ class SongsController < ApplicationController
   # DELETE /songs/1.json
   def destroy
     @singer = Singer.find(params[:singer_id])
-    @song = Song.find(params[:id])
     @song.destroy
 
     respond_to do |format|
